@@ -1,6 +1,5 @@
 package me.leoko.advancedban.bukkit;
 
-import me.leoko.advancedban.AdvancedBan;
 import me.leoko.advancedban.AdvancedBanPlayer;
 import org.bukkit.entity.Player;
 

@@ -1,7 +1,6 @@
 package me.leoko.advancedban.bukkit;
 
 import lombok.RequiredArgsConstructor;
-import me.leoko.advancedban.AdvancedBan;
 import me.leoko.advancedban.AdvancedBanCommandSender;
 import org.bukkit.command.CommandSender;
 

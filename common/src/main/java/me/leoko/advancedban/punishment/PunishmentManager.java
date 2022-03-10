@@ -249,8 +249,19 @@ public class PunishmentManager {
     }
 
     public Punishment getPunishmentFromResultSet(ResultSet rs) throws SQLException {
+        String id = rs.getString("uuid");
+        Object identifier = null;
+        if (id.matches("^(?:[0-9]{1,3}\\.){3}[0-9]{1,3}$")) {
+            try {
+                identifier = InetAddress.getByName(id);
+            } catch (Exception e) {
+            }
+        }
+        if (identifier == null) {
+            identifier = UUID.fromString(id);
+        }
         Punishment punishment = new Punishment(
-                UUID.fromString(rs.getString("uuid")),
+                identifier,
                 rs.getString("name"),
                 rs.getString("operator"),
                 rs.getString("calculation"),
