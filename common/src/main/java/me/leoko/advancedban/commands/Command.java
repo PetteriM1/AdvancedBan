@@ -31,7 +31,7 @@ public enum Command {
 
     TEMP_BAN(
             PunishmentType.TEMP_BAN.getPerms(),
-            "\\S+ ([1-9][0-9]*([wdhms]|mo)|#\\S+)( .*)?",
+            ".+ ([1-9][0-9]*([wdhms]|mo)|#\\S+)( .*)?",
             new PunishmentCommand(PunishmentType.TEMP_BAN),
             PunishmentType.TEMP_BAN.getConfSection("Usage"),
             "tempban"),
@@ -59,7 +59,7 @@ public enum Command {
 
     TEMP_MUTE(
             PunishmentType.TEMP_MUTE.getPerms(),
-            "\\S+ ([1-9][0-9]*([wdhms]|mo)|#\\S+)( .*)?",
+            ".+ ([1-9][0-9]*([wdhms]|mo)|#\\S+)( .*)?",
             new PunishmentCommand(PunishmentType.TEMP_MUTE),
             PunishmentType.TEMP_MUTE.getConfSection("Usage"),
             "tempmute"),
@@ -73,7 +73,7 @@ public enum Command {
 
     TEMP_WARN(
             PunishmentType.TEMP_WARNING.getPerms(),
-            "\\S+ ([1-9][0-9]*([wdhms]|mo)|#\\S+)( .*)?",
+            ".+ ([1-9][0-9]*([wdhms]|mo)|#\\S+)( .*)?",
             new PunishmentCommand(PunishmentType.TEMP_WARNING),
             PunishmentType.TEMP_WARNING.getConfSection("Usage"),
             "tempwarn"),
@@ -94,13 +94,13 @@ public enum Command {
             "kick"),
 
     UN_BAN("ab." + PunishmentType.BAN.getName() + ".undo",
-            "\\S+",
+            ".+",
             new RevokePunishmentCommand(PunishmentType.BAN),
             "Un" + PunishmentType.BAN.getConfSection("Usage"),
             "unban"),
 
     UN_MUTE("ab." + PunishmentType.MUTE.getName() + ".undo",
-            "\\S+",
+            ".+",
             new RevokePunishmentCommand(PunishmentType.MUTE),
             "Un" + PunishmentType.MUTE.getConfSection("Usage"),
             "unmute"),
@@ -198,7 +198,7 @@ public enum Command {
             "banlist"),
 
     HISTORY("ab.history",
-            "\\S+( [1-9][0-9]*)?",
+            ".+( [1-9][0-9]*)?",
             new ListCommand(
                     target -> PunishmentManager.getInstance().getPunishments(target, null, false),
                     "History", true, true),
@@ -206,7 +206,7 @@ public enum Command {
             "history"),
 
     WARNS(null,
-            "\\S+( [1-9][0-9]*)?|\\S+",
+            ".+( [1-9][0-9]*)?|\\S+",
             input -> {
                 if (input.getPrimary().matches("\\S+")) {
                     if (!input.getSender().hasPermission("ab.warns.other")) {
@@ -233,7 +233,7 @@ public enum Command {
             "warns"),
 
     CHECK("ab.check",
-            "\\S+",
+            ".+",
             input -> {
                 String name = input.getPrimary();
 
@@ -243,9 +243,9 @@ public enum Command {
 
 
                 Optional<InetAddress> address = AdvancedBan.get().getAddress(name.toLowerCase());
-                String ip = address.map(InetAddress::getHostAddress).orElse("none cashed");
+                String ip = address.map(InetAddress::getHostAddress).orElse("unknown");
 
-                String loc = address.flatMap(GeoLocation::getLocation).orElse("failed to fetch!");
+                String loc = address.flatMap(GeoLocation::getLocation).orElse("unknown");
                 Punishment mute = PunishmentManager.getInstance().getPunishment(uuid, PunishmentType.MUTE).orElse(null);
                 Punishment ban = PunishmentManager.getInstance().getPunishment(uuid, PunishmentType.BAN).orElse(null);
 

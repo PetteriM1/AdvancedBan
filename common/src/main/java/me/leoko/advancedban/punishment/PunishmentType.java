@@ -22,13 +22,13 @@ public enum PunishmentType {
     private final PunishmentType basic;
     private final boolean temp;
     private final boolean ip;
-    private String[] aliases;
-    private String[] unaliases;
+    private final String[] aliases;
+    private final String[] unaliases;
 
     PunishmentType(String name, PunishmentType basic, String perms, boolean temp, boolean ip, String[] aliases, String[] unaliases) {
         this.name = name;
         this.command = name.toLowerCase();
-        this.basic = basic;
+        this.basic = basic == null ? this : basic;
         this.perms = perms;
         this.temp = temp;
         this.ip = ip;
