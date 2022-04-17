@@ -15,7 +15,7 @@ import java.util.Optional;
 public class MessageListener implements Listener {
     private final AdvancedBan advancedBan;
 
-    @EventHandler(priority = EventPriority.HIGHEST)
+    @EventHandler(priority = EventPriority.LOWEST)
     public void onChat(PlayerChatEvent event) {
         Optional<AdvancedBanPlayer> player = advancedBan.getPlayer(event.getPlayer().getUniqueId());
         if (player.isPresent() && advancedBan.onChat(player.get(), event.getMessage())) {
@@ -23,7 +23,7 @@ public class MessageListener implements Listener {
         }
     }
 
-    @EventHandler(priority = EventPriority.HIGHEST)
+    @EventHandler(priority = EventPriority.LOWEST)
     public void onCommand(PlayerCommandPreprocessEvent event) {
         Optional<AdvancedBanPlayer> player = advancedBan.getPlayer(event.getPlayer().getUniqueId());
         if (player.isPresent() && advancedBan.onCommand(player.get(), event.getMessage())) {

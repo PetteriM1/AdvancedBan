@@ -23,7 +23,7 @@ public class ConnectionListener implements Listener {
     private final AdvancedBan advancedBan;
     private final Map<UUID, String> banned = new HashMap<>();
 
-    @EventHandler(priority = EventPriority.HIGHEST)
+    @EventHandler(priority = EventPriority.LOWEST)
     public void onConnect(PlayerAsyncPreLoginEvent event) {
         try {
             advancedBan.onPreLogin(event.getName(), event.getUuid(), InetAddress.getByName(event.getAddress())).ifPresent(reason -> banned.put(event.getUuid(), reason));
