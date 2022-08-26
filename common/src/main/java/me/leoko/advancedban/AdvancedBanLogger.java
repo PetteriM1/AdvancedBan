@@ -160,7 +160,7 @@ public class AdvancedBanLogger {
                     Files.createFile(latestLogPath);
                 }
             } catch (IOException ex) {
-                Logger.getLogger(AdvancedBanLogger.class.getName()).log(Level.WARNING, "An unexpected error has ocurred while trying to compress the latest log file. {0}", ex.getMessage());
+                Logger.getLogger(AdvancedBanLogger.class.getName()).log(Level.WARNING, "An unexpected error has occurred while trying to compress the latest log file. {0}", ex.getMessage());
             }
         }
     }

@@ -87,13 +87,13 @@ public abstract class AdvancedBan {
         }
 
 
-        String upt = "You have the newest version";
+        /*String upt = "You have the newest version";
         String currentVersion = requestCurrentVersion();
         if (currentVersion == null) {
             upt = "Failed to check for updates :(";
         } else if (!getVersion().startsWith(currentVersion)) {
             upt = "There is a new version available! [" + currentVersion + "]";
-        }
+        }*/
 
         if (getConfiguration().isDetailedEnableMessage()) {
             logToConsoleSender("\n \n§8[]=====[§7Enabling AdvancedBan§8]=====[]"
@@ -105,12 +105,12 @@ public abstract class AdvancedBan {
                     + "\n§8| §cSupport:"
                     + "\n§8|   §cGithub: §7https://github.com/DevLeoko/AdvancedBan/issues"
                     + "\n§8|   §cDiscord: §7https://discord.gg/ycDG6rS"
-                    + "\n§8| §cUpdate:"
-                    + "\n§8|   §7" + upt
+                    //+ "\n§8| §cUpdate:"
+                    //+ "\n§8|   §7" + upt
                     + "\n§8[]================================[]§r\n ");
         } else {
             logToConsoleSender("§cEnabling AdvancedBan on Version §7" + getVersion());
-            logToConsoleSender("§7§o"+upt);
+            //logToConsoleSender("§7§o"+upt);
         }
     }
 

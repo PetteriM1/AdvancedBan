@@ -72,7 +72,7 @@ public class PunishmentManager {
             }
             rs.close();
         } catch (SQLException ex) {
-            logger.warn("An error has ocurred loading the punishments from the database.");
+            logger.warn("An error has occurred loading the punishments from the database.");
             logger.logException(ex);
         }
         return new InterimData(uuid, name, address, punishments, history);
@@ -178,7 +178,7 @@ public class PunishmentManager {
             }
             rs.close();
         } catch (SQLException ex) {
-            logger.info("An error has ocurred getting a punishment by his id.");
+            logger.info("An error has occurred getting a punishment by his id.");
             logger.debug("Punishment id: '" + id + "'");
             logger.logException(ex);
         }
@@ -249,7 +249,7 @@ public class PunishmentManager {
     }
 
     public Punishment getPunishmentFromResultSet(ResultSet rs) throws SQLException {
-        String id = rs.getString("uuid");
+        String id = rs.getString("uuid").replace("/", "");
         Object identifier = null;
         if (id.matches("^(?:[0-9]{1,3}\\.){3}[0-9]{1,3}$")) {
             try {
