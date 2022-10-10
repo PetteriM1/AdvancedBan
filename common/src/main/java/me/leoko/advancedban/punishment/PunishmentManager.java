@@ -89,7 +89,7 @@ public class PunishmentManager {
     }
 
     public void discard(AdvancedBanPlayer player) {
-        cached.remove(player.getName());
+        cached.remove(player.getName().toLowerCase());
         cached.remove(player.getUniqueId());
         cached.remove(player.getAddress());
 
@@ -104,7 +104,7 @@ public class PunishmentManager {
         Objects.requireNonNull(data, "data");
         getLoadedPunishments(false).addAll(data.getPunishments());
         getLoadedHistory().addAll(data.getHistory());
-        addCached(data.getName());
+        addCached(data.getName().toLowerCase());
         addCached(data.getAddress());
         addCached(data.getUuid());
     }

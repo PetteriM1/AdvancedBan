@@ -209,7 +209,7 @@ public abstract class AdvancedBan {
 
         if (!punishment.isPresent()) {
             PunishmentManager.getInstance().acceptData(interimData);
-            addresses.put(name, address);
+            addresses.put(name.toLowerCase(), address);
             addresses.put(uuid, address);
         }
 
@@ -228,13 +228,13 @@ public abstract class AdvancedBan {
 
     public void onDisconnect(AdvancedBanPlayer player) {
         removePlayer(player);
-        addresses.remove(player.getName());
+        addresses.remove(player.getName().toLowerCase());
         addresses.remove(player.getUniqueId());
     }
 
     protected void removePlayer(AdvancedBanPlayer player) {
         players.remove(player.getUniqueId());
-        players.remove(player.getName());
+        players.remove(player.getName().toLowerCase());
         players.remove(player.getAddress());
         PunishmentManager.getInstance().discard(player);
     }

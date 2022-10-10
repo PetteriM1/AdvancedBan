@@ -23,7 +23,7 @@ public class CommandUtils {
     // Removes name argument and returns uuid (null if failed)
     public UUID processName(Command.CommandInput input) {
         String name = input.next();
-        UUID uuid = UUIDManager.getInstance().getUuid(name.toLowerCase()).orElse(null);
+        UUID uuid = UUIDManager.getInstance().getUuid(name).orElse(null);
 
         if (uuid == null)
             input.getSender().sendCustomMessage("General.FailedFetch", true, "NAME", name);

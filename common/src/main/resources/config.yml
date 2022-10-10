@@ -52,10 +52,7 @@ MuteCommands:
 # These players will not be able to get punished in any way
 # this also works if the player is offline
 ExemptPlayers:
-- 'Leoko'
-- 'md5'
-- 'dutchy1001'
-- 'ItzSomebody'
+- 'Example_Player'
 
 # The date-format which will be used for the %DATE% variable
 DateFormat: "dd.MM.yyyy-HH:mm"
