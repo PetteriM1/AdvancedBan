@@ -31,7 +31,7 @@ public class PunishmentManager {
     private final Set<Object> cached = Collections.newSetFromMap(new ConcurrentHashMap<>());
 
     public void onEnable() {
-        DatabaseManager.getInstance().executeStatement(SQLQuery.DELETE_OLD_PUNISHMENTS, TimeManager.getTime());
+        //DatabaseManager.getInstance().executeStatement(SQLQuery.DELETE_OLD_PUNISHMENTS, TimeManager.getTime());
 
         AdvancedBan.get().getOnlinePlayers()
                 .forEach(player -> load(player.getUniqueId(), player.getName(), player.getAddress().getAddress()));
